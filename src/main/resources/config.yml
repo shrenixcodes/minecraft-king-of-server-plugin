@@ -1,0 +1,78 @@
+# King of the Server
+#
+# Every `king.duration` of real elapsed time, the server crowns a new King. The timer
+# is wall-clock based: it is not affected by Minecraft day/night cycles, weather, or
+# server TPS. Durations accept combinations of d/h/m/s, e.g. "7m", "90s", "1h30m".
+
+king:
+  # How long each reign lasts.
+  duration: 7m
+
+  # How the next King is chosen: "weighted" (players who have been King less often are
+  # more likely to be picked, but anyone can still be chosen) or "random" (uniform).
+  selection-mode: weighted
+
+  # If true, the same player will not be picked twice in a row when another eligible
+  # player is available.
+  prevent-consecutive-king: true
+
+  # Minimum number of eligible online players required before a King is chosen. Below
+  # this, rotation pauses until enough players are online.
+  minimum-players: 1
+
+  # Whether the rotation starts automatically when the plugin loads. If false, an
+  # operator must run "/king start".
+  auto-start: true
+
+abilities:
+  royal-speed:
+    enabled: true
+    amplifier: 1
+  royal-strength:
+    enabled: true
+    amplifier: 1
+  royal-jump:
+    enabled: true
+    amplifier: 1
+  royal-vision:
+    enabled: true
+  royal-shield:
+    enabled: true
+    # How long the shield's damage resistance lasts once triggered.
+    duration-seconds: 5
+    # How often the King can trigger the shield by sneaking.
+    cooldown-seconds: 45
+
+ui:
+  boss-bar:
+    enabled: true
+    color: YELLOW
+    style: SEGMENTED_10
+
+  action-bar:
+    enabled: true
+
+  scoreboard:
+    enabled: true
+
+  particles:
+    enabled: true
+
+  sounds:
+    enabled: true
+
+messages:
+  announce-new-king: true
+  announce-one-minute-warning: true
+  # Length of the on-screen countdown shown right before a rotation (0 disables it).
+  countdown-seconds: 10
+
+selection:
+  exclude-spectators: true
+  exclude-vanished: true
+
+  # What happens when the current King disconnects:
+  #   KEEP    - the King keeps the crown while offline; the timer keeps running and an
+  #             online player is chosen at the next rotation as usual.
+  #   REPLACE - a new King is chosen immediately from online eligible players.
+  offline-king-policy: KEEP

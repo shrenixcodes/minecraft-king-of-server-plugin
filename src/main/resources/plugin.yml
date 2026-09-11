@@ -1,0 +1,44 @@
+name: KingOfTheServer
+version: '${version}'
+main: com.kingoftheserver.plugin.KingOfTheServerPlugin
+api-version: '1.21'
+author: KingOfTheServer Contributors
+description: Every 7 real-world minutes, the server crowns a new King.
+website: https://github.com/kingoftheserver/king-of-the-server
+
+commands:
+  king:
+    description: Manage and view King of the Server information.
+    usage: /king [info|status|abilities|stats|start|stop|next|set|reload]
+
+permissions:
+  king.use:
+    description: Allows use of basic /king commands.
+    default: true
+  king.admin:
+    description: Grants all administrative King of the Server permissions.
+    default: op
+    children:
+      king.admin.start: true
+      king.admin.stop: true
+      king.admin.next: true
+      king.admin.set: true
+      king.admin.reload: true
+  king.admin.start:
+    description: Allows starting the King rotation.
+    default: op
+  king.admin.stop:
+    description: Allows stopping the King rotation.
+    default: op
+  king.admin.next:
+    description: Allows forcing the next King rotation.
+    default: op
+  king.admin.set:
+    description: Allows manually assigning the King.
+    default: op
+  king.admin.reload:
+    description: Allows reloading the plugin configuration.
+    default: op
+  king.bypass:
+    description: Excludes the player from King selection entirely.
+    default: false
