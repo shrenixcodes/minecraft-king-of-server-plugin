@@ -41,6 +41,27 @@ public final class KingRoundTracker {
         return new RoundTransition(roundNumber, depoedKing, reignLength, nextKing, sameKingContinuation);
     }
 
+    /**
+     * Pushes the reign start forward to {@code now} without starting a new round.
+     * Used when no eligible player is available at expiry, so the plugin quietly waits
+     * instead of repeatedly attempting (and failing) a rotation every second.
+     */
+    /**
+     * Shifts the reign start forward by {@code pausedFor}, so time spent with rotation
+     * stopped (via {@code /king stop}) is not counted against the current reign.
+     */
+    public void shiftReignStart(Duration pausedFor) {
+        if (reignStartedAt != null) {
+            reignStartedAt = reignStartedAt.plus(pausedFor);
+        }
+    }
+
+    public void extend(Instant now) {
+        if (currentKing != null) {
+            reignStartedAt = now;
+        }
+    }
+
     public void clearKing() {
         currentKing = null;
         reignStartedAt = null;

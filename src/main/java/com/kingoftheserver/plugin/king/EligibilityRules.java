@@ -9,9 +9,9 @@ public final class EligibilityRules {
     private EligibilityRules() {
     }
 
-    public static boolean isEligible(boolean online, boolean spectator, boolean vanished, boolean bypass,
-                                      boolean excludeSpectators, boolean excludeVanished) {
-        if (!online) {
+    public static boolean isEligible(boolean online, boolean hasUsePermission, boolean spectator, boolean vanished,
+                                      boolean bypass, boolean excludeSpectators, boolean excludeVanished) {
+        if (!online || !hasUsePermission) {
             return false;
         }
         if (bypass) {
