@@ -1,10 +1,9 @@
 name: KingOfTheServer
 version: '${version}'
 main: com.kingoftheserver.plugin.KingOfTheServerPlugin
-api-version: '1.21'
+api-version: '26.2'
 author: KingOfTheServer Contributors
 description: Every 7 real-world minutes, the server crowns a new King.
-website: https://github.com/kingoftheserver/king-of-the-server
 
 commands:
   king:
