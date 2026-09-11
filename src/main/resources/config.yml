@@ -46,8 +46,10 @@ abilities:
 ui:
   boss-bar:
     enabled: true
+    # One of: PINK, BLUE, RED, GREEN, YELLOW, PURPLE, WHITE
     color: YELLOW
-    style: SEGMENTED_10
+    # One of: PROGRESS, NOTCHED_6, NOTCHED_10, NOTCHED_12, NOTCHED_20
+    style: NOTCHED_10
 
   action-bar:
     enabled: true
