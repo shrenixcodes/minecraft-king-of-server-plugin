@@ -293,6 +293,13 @@ public final class KingManager {
         return candidates;
     }
 
+    /**
+     * The "vanished" metadata key is a long-standing cross-plugin convention (Essentials,
+     * SuperVanish/PremiumVanish, CMI) for signaling that a player is invisible to others.
+     * It predates, and is independent of, any single plugin's persistent data, so the
+     * deprecated {@link org.bukkit.metadata.Metadatable} API is the only way to read it.
+     */
+    @SuppressWarnings("deprecation")
     private boolean isVanished(Player player) {
         for (MetadataValue value : player.getMetadata("vanished")) {
             if (value.asBoolean()) {

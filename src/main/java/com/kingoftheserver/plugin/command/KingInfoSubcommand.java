@@ -5,8 +5,8 @@ import com.kingoftheserver.plugin.king.KingManager;
 import com.kingoftheserver.plugin.util.DurationUtil;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+import io.papermc.paper.plugin.configuration.PluginMeta;
 import org.bukkit.command.CommandSender;
-import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class KingInfoSubcommand implements KingSubcommand {
@@ -43,7 +43,7 @@ public final class KingInfoSubcommand implements KingSubcommand {
 
     @Override
     public void execute(CommandSender sender, String[] args) {
-        PluginDescriptionFile description = plugin.getDescription();
+        PluginMeta description = plugin.getPluginMeta();
 
         sender.sendMessage(Component.text("♕ King of the Server", NamedTextColor.GOLD));
         if (kingManager.currentKing().isPresent()) {
